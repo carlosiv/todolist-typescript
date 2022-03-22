@@ -4,11 +4,10 @@ import styled from "styled-components";
 import { addTodo } from "../api/todoApi";
 
 const TodoBox = styled.div`
-  position: relative;
-
+  width: 100%;
   width: 400px;
   padding: 40px;
-
+  margin: 20px;
   background: rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);

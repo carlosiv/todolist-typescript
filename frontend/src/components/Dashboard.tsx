@@ -10,10 +10,19 @@ const StatContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  margin-left: 40px;
+  margin-left: 60px;
   margin-top: 20px;
 `;
 
+const DashboardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const FormContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 const Dashboard = () => {
   //todo context
   const [todos, setTodos] = useTodoContext();
@@ -24,10 +33,10 @@ const Dashboard = () => {
   }, [todos, setTodos]);
 
   return (
-    <div>
-      <div>
+    <DashboardContainer>
+      <FormContainer>
         <TodoForm />
-      </div>
+      </FormContainer>
       <StatContainer>
         <div>
           <span>Total: </span>
@@ -56,7 +65,7 @@ const Dashboard = () => {
           </span>
         </div>
       </StatContainer>
-    </div>
+    </DashboardContainer>
   );
 };
 

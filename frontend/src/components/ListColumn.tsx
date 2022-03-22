@@ -1,8 +1,35 @@
 import { useState } from "react";
+import styled from "styled-components";
 import { useTodoContext } from "../context/TodoContext";
 import { Todo } from "../types";
 import TodoCardsOne from "./TodoCardOne";
 
+const RadioContainer = styled.div`
+  display: "flex";
+  align-items: "center";
+  justify-content: "center";
+  margin: "20px";
+`;
+
+const ColumnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+`;
+
+const CardsContainer = styled.div`
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  align-items: "center";
+  justify-content: "center";
+`;
+
+const FieldsetContainer = styled.fieldset`
+  display: flex;
+  margin: 10px;
+`;
 const ListColumn = () => {
   //context api
   const [todos] = useTodoContext();
@@ -16,16 +43,9 @@ const ListColumn = () => {
   };
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: "20px",
-        }}
-      >
-        <fieldset>
+    <ColumnContainer>
+      <RadioContainer>
+        <FieldsetContainer>
           <legend>Please select todo status</legend>
           <span>
             <input
@@ -73,9 +93,10 @@ const ListColumn = () => {
             />
             <label htmlFor="todoStatus">Done</label>
           </span>
-        </fieldset>
-      </div>
-      <div>
+        </FieldsetContainer>
+      </RadioContainer>
+
+      <CardsContainer>
         {selectedType !== "all"
           ? todos
               .filter((todo: Todo) => todo.status === selectedType)
@@ -85,8 +106,8 @@ const ListColumn = () => {
           : todos.map((todo: Todo, i: number) => {
               return <TodoCardsOne key={i} todo={todo} />;
             })}
-      </div>
-    </div>
+      </CardsContainer>
+    </ColumnContainer>
   );
 };
 
